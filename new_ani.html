@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>评论弹幕</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/jquery.min.js"></script>
+</head>
+<body>
+    <div class="feng-ccl-panel">
+        <div class="abp" id="feng-player">
+            <div id="commentCanvas" class="container"></div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer_box">
+            <input class="input" type="text" maxlength="15">
+            <a id="btn_js" class="btn" href="javascript:;">发表</a>
+        </div>
+    </div>
+<script src="js/CommentCoreLibrary.js"></script>
+<script>
+function getCmtDataList() {
+    var cmtArr = [];
+    // 可用ajax获取服务器的弹幕数据
+    /*$.ajax({
+        type : 'GET',
+        url : 'data.php',
+        dataType : 'json',
+        data : {sid : 100},
+        success : function(data) {
+            cmtArr = data.dataList;
+
+            if (cmtArr && cmtArr.length > 0) {
+                sendMsg(cmtArr);
+            }
+        }
+    });*/
+    // 模拟数据
+    cmtArr = [
+        // {"text":"66666666", "bgColor":"#424448",'icon':'http://wx.qlogo.cn/mmopen/t55HWj0Oe7G9QqbiaofVdID8LxXLqKPgJJNfCsUAUVp6ExBicAqicia99ic09pZHWiawg0PmKr4rRT4215E7ia33QM3EnLalRrcTkeia/0'},
+        // {"text":"哈哈哈哈哈哈", "bgColor":"#424448"},
+        // {"text":"233333", "bgColor":"#23b28b"},
+        // {"text":"这是什么鬼？", "bgColor":"#424448"},
+        // {"text":"一直都这么牛", "bgColor":"#3dbbc0"},
+        // {"text":"来啊，互相伤害啊", "bgColor":"#ec4262"}
+    ]
+    // sendMsg(cmtArr);
+}
+
+function sendMsg(cmtArr) {
+
+        var cmtItem = cmtArr,
+            iconStr = '';
+        if (cmtItem.icon && cmtItem.icon.length > 0) {
+            iconStr = '<span class="icon"><img src="'+ cmtItem.icon +'"></span>';
+        }
+
+        // 字幕的节点内容
+        cmtItem.text = iconStr + cmtItem.text;
+        // 随机弹出方式
+        cmtItem.mode = selectfrom(1,2);
+        // 随机飘过的速度
+        cmtItem.dur = Math.floor(Math.random()*4000 + 4000);
+        CM.send(cmtItem);
+}
+
+function cmtController() {
+    getCmtDataList();
+    //2s读取一次
+    setTimeout(function(){
+        cmtController();
+    }, 3000);
+}
+
+// 获取自定义区间随机数
+function selectfrom(lowValue,highValue) {
+    var choice = highValue - lowValue + 1;
+    return Math.floor(Math.random() * choice + lowValue);
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+    var CM = new CommentManager(document.getElementById('commentCanvas'));
+    CM.init();
+    // 启动播放弹幕（在未启动状态下弹幕不会移动）
+    CM.start();
+    // 开放 CM 对象到全局这样就可以在 console 终端里操控
+    window.CM = CM;
+    // 弹幕播放
+    // cmtController();
+} ,false);
+var cmtArr = [];
+var msg;
+var headimg = 'img/0.jpg';
+$('#btn_js').on('click',function() {
+    msg = $('.input').val();
+    var i = selectfrom(0,4);
+    if (msg != '') {
+        cmtArr[0] = {"text":msg, "bgColor":'#23b28b','icon': headimg};
+        cmtArr[1] = {"text":msg, "bgColor":'#424448','icon': headimg};
+        cmtArr[2] = {"text":msg, "bgColor":'#3dbbc0','icon': headimg};
+        cmtArr[3] = {"text":msg, "bgColor":'#ec4262','icon': headimg};
+        cmtArr[4] = {"text":msg, "bgColor":'#ec4262','icon': headimg};
+        console.log(cmtArr[1]);
+        sendMsg(cmtArr[i]);
+    };
+    $('.input').val('');
+})
+</script>
+</body>
+</html>
