@@ -30,9 +30,9 @@
         </ul>
     </div>
     <div class="footer">
-        <div class="footer_box">
-            <input class="input" type="text" maxlength="15">
-            <a id="btn_js" class="btn" href="javascript:;">发表</a>
+        <div class="footer_box clearfix">
+            <input class="input fl" type="text" maxlength="15">
+            <a id="btn_js" class="btn fl" href="javascript:;">发表</a>
         </div>
     </div>
 <script src="js/CommentCoreLibrary.js"></script>
@@ -53,6 +53,7 @@ window.onload = function() {
                   +  '</li>';
     };
     $('.discuss_ul').append(lineCache);
+
 };
 function getCmtDataList() {
     var cmtArr = [];
