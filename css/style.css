@@ -94,9 +94,9 @@ body {
     border-radius: 5px;
     display: inline-block;
     height: 30px;
-    width: calc(100% - 75px);
-    width: -moz-calc(100% - 75px);
-    width: -webkit-calc(100% - 75px);
+    width: calc(100% - 80px);
+    width: -moz-calc(100% - 80px);
+    width: -webkit-calc(100% - 80px);
     text-indent: 5px;
     font-size: 14px;
 }
