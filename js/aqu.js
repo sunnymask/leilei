@@ -117,4 +117,32 @@ var canvas = document.getElementById('canvas'),
          
             oAqu.draw(ctx,del);
         }())
+        var cmtArr = [
+            {text: "瀑布的水逆流而上", bgColor: "#424448", icon: "img/0.jpg"},
+            {text: "蒲公英的种子从远处飘回", bgColor: "#424448", icon: "img/0.jpg"},
+            {text: "聚成伞的模样", bgColor: "#424448", icon: "img/0.jpg"},
+            {text: "太阳从西边升起，落向东方", bgColor: "#424448", icon: "img/0.jpg"},
+            {text: "子弹退回枪膛", bgColor: "#424448", icon: "img/0.jpg"},
+            {text: "运动员回到起跑线上", bgColor: "#424448", icon: "img/0.jpg"},
+            {text: "我交回录取通知书", bgColor: "#424448", icon: "img/0.jpg"},
+            {text: "忘了十年寒窗", bgColor: "#424448", icon: "img/0.jpg"},
+            {text: "厨房里飘来饭菜的香", bgColor: "#424448", icon: "img/0.jpg"},
+            {text: "你把我的卷子签好名字", bgColor: "#424448", icon: "img/0.jpg"},
+            {text: "关掉电视，帮我把书包背上", bgColor: "#424448", icon: "img/0.jpg"},
+            {text: "你还在我身旁", bgColor: "#424448", icon: "img/0.jpg"}
+        ];
+        var i = 0;
+        poty();
+        function poty() {
+            console.log(i);
+            if (i > 12) {
+                return;   
+            }else {
+                sendMsg(cmtArr[i]);
+                i += 1;
+                setTimeout(function() {
+                    poty();
+                },6000);
+            };
+        }  
     };

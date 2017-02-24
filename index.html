@@ -20,13 +20,90 @@
     <div class="discuss">
         <p>最新评论</p>
         <ul class="discuss_ul">
-           <!-- <li>
+            <li>
                 <div class="clearfix pdt10">
-                    <p class="discuss_name fl">我：</p>
-                    <p class="discuss_date fr">刚刚</p>
+                    <p class="discuss_name fl">水墨：</p>
+                    <p class="discuss_date fr">2017-2-24</p>
                 </div>
-                <p class="discuss_content">说的一句话</p>
-            </li> -->
+                <p class="discuss_content">瀑布的水逆流而上</p>
+            </li>
+            <li>
+                <div class="clearfix pdt10">
+                    <p class="discuss_name fl">水墨：</p>
+                    <p class="discuss_date fr">2017-2-24</p>
+                </div>
+                <p class="discuss_content">蒲公英的种子从远处飘回</p>
+            </li>
+            <li>
+                <div class="clearfix pdt10">
+                    <p class="discuss_name fl">水墨：</p>
+                    <p class="discuss_date fr">2017-2-24</p>
+                </div>
+                <p class="discuss_content">聚成伞的模样</p>
+            </li>
+            <li>
+                <div class="clearfix pdt10">
+                    <p class="discuss_name fl">水墨：</p>
+                    <p class="discuss_date fr">2017-2-24</p>
+                </div>
+                <p class="discuss_content">太阳从西边升起，落向东方</p>
+            </li>
+            <li>
+                <div class="clearfix pdt10">
+                    <p class="discuss_name fl">水墨：</p>
+                    <p class="discuss_date fr">2017-2-24</p>
+                </div>
+                <p class="discuss_content">子弹退回枪膛</p>
+            </li>
+            <li>
+                <div class="clearfix pdt10">
+                    <p class="discuss_name fl">水墨：</p>
+                    <p class="discuss_date fr">2017-2-24</p>
+                </div>
+                <p class="discuss_content">运动员回到起跑线上</p>
+            </li>
+            <li>
+                <div class="clearfix pdt10">
+                    <p class="discuss_name fl">水墨：</p>
+                    <p class="discuss_date fr">2017-2-24</p>
+                </div>
+                <p class="discuss_content">我交回录取通知书</p>
+            </li>
+            <li>
+                <div class="clearfix pdt10">
+                    <p class="discuss_name fl">水墨：</p>
+                    <p class="discuss_date fr">2017-2-24</p>
+                </div>
+                <p class="discuss_content">忘了十年寒窗</p>
+            </li>
+            <li>
+                <div class="clearfix pdt10">
+                    <p class="discuss_name fl">水墨：</p>
+                    <p class="discuss_date fr">2017-2-24</p>
+                </div>
+                <p class="discuss_content">厨房里飘来饭菜的香</p>
+            </li>
+            <li>
+                <div class="clearfix pdt10">
+                    <p class="discuss_name fl">水墨：</p>
+                    <p class="discuss_date fr">2017-2-24</p>
+                </div>
+                <p class="discuss_content">你把我的卷子签好名字</p>
+            </li>
+            <li>
+                <div class="clearfix pdt10">
+                    <p class="discuss_name fl">水墨：</p>
+                    <p class="discuss_date fr">2017-2-24</p>
+                </div>
+                <p class="discuss_content">关掉电视，帮我把书包背上</p>
+            </li>
+            <li>
+                <div class="clearfix pdt10">
+                    <p class="discuss_name fl">水墨：</p>
+                    <p class="discuss_date fr">2017-2-24</p>
+                </div>
+                <p class="discuss_content">你还在我身旁</p>
+            </li>
         </ul>
     </div>
     <div class="footer">
@@ -52,7 +129,7 @@ window.onload = function() {
                   +      '<p class="discuss_content">'+disCache[i].content+'</p>'
                   +  '</li>';
     };
-    $('.discuss_ul').append(lineCache);
+    $('.discuss_ul').prepend(lineCache);
 
 };
 function getCmtDataList() {
@@ -73,7 +150,6 @@ function getCmtDataList() {
     });*/
     // 模拟数据
     cmtArr = [
-        // {"text":"66666666", "bgColor":"#424448",'icon':'http://wx.qlogo.cn/mmopen/t55HWj0Oe7G9QqbiaofVdID8LxXLqKPgJJNfCsUAUVp6ExBicAqicia99ic09pZHWiawg0PmKr4rRT4215E7ia33QM3EnLalRrcTkeia/0'},
         // {"text":"哈哈哈哈哈哈", "bgColor":"#424448"},
         // {"text":"233333", "bgColor":"#23b28b"},
         // {"text":"这是什么鬼？", "bgColor":"#424448"},
@@ -98,6 +174,25 @@ function sendMsg(cmtArr) {
         // 随机飘过的速度
         cmtItem.dur = Math.floor(Math.random()*4000 + 4000);
         CM.send(cmtItem);
+}
+
+function sendAllMsg(cmtArr) {
+
+    for (var i=0; i<cmtArr.length; i++) {
+        var cmtItem = cmtArr[i],
+            iconStr = '';
+
+        if (cmtItem.icon && cmtItem.icon.length > 0) {
+            iconStr = '<span class="icon"><img src="'+ cmtItem.icon +'"></span>';
+        }
+
+        // 字幕的节点内容
+        cmtItem.text = iconStr + cmtItem.text;
+        cmtItem.mode = 1;
+        cmtItem.dur = Math.floor(Math.random()*4000 + 4000);
+
+        CM.send(cmtItem);
+    }
 }
 
 function cmtController() {
