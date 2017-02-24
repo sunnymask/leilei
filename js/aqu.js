@@ -44,7 +44,7 @@ Aqu.prototype.draw = function(ctx,del){
 }
 var canvas = document.getElementById('canvas'),
     ctx = canvas.getContext('2d');
-    canvas.height = document.body.clientHeight;
+    canvas.height = document.documentElement.clientHeight;
     canvas.width = document.body.clientWidth;
     centerx = canvas.width/2;
     centery = canvas.height/2;
@@ -97,7 +97,8 @@ var canvas = document.getElementById('canvas'),
     }())
     function drawAqu() {
         canvas.height = 235;
-        $('.discuss_ul').css('height',document.body.clientHeight - 320 + 'px');
+        console.log(document.documentElement.clientHeight);
+        $('.discuss_ul').css('height',document.documentElement.clientHeight - 320 + 'px');
         $('.feng-ccl-panel').css('height','235px');
         //实例水草
         var oAquAni = null;
