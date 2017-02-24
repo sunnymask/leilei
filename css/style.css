@@ -157,6 +157,7 @@ body {
 .discuss_ul li p {
     margin: 0;
     color: #333;
+    font-size: 16px;
 }
 .discuss_name{font-size:12px}
 .discuss_date{font-size:12px}
