@@ -170,7 +170,7 @@ function sendMsg(cmtArr) {
         // 字幕的节点内容
         cmtItem.text = iconStr + cmtItem.text;
         // 随机弹出方式
-        cmtItem.mode = selectfrom(1,2);
+        cmtItem.mode = selectfrom(1,2,3);
         // 随机飘过的速度
         cmtItem.dur = Math.floor(Math.random()*4000 + 4000);
         CM.send(cmtItem);
