@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"> 
 <title>评论弹幕</title>
 <link rel="stylesheet" href="css/style.css">
 <script src="js/jquery.min.js"></script>
+<script src="js/utils.js"></script>
 </head>
 <body>
     <div class="feng-ccl-panel">
         <div class="abp" id="feng-player">
-            <div id="commentCanvas" class="container"></div>
+            <div id="commentCanvas" class="container">
+                <canvas id="canvas" width="320" height="235"></canvas>
+            </div>
         </div>
+    </div>
+    <div class="discuss">
+        <p>最新评论</p>
+        <ul class="discuss_ul">
+           <!-- <li>
+                <div class="clearfix pdt10">
+                    <p class="discuss_name fl">我：</p>
+                    <p class="discuss_date fr">刚刚</p>
+                </div>
+                <p class="discuss_content">说的一句话</p>
+            </li> -->
+        </ul>
     </div>
     <div class="footer">
         <div class="footer_box">
@@ -19,7 +34,24 @@
         </div>
     </div>
 <script src="js/CommentCoreLibrary.js"></script>
+<script src="js/aqu.js"></script>
 <script>
+window.onload = function() {
+    var disCache = window.sessionStorage.getItem("disCache");
+    disCache = JSON.parse(disCache);
+    console.log(disCache);
+    var lineCache = '';
+    for (var i = 0; i < disCache.length; i++) {
+        lineCache += '<li>'
+                  +      '<div class="clearfix pdt10">'
+                  +          '<p class="discuss_name fl">我：</p>'
+                  +          '<p class="discuss_date fr">'+disCache[i].time+'</p>'
+                  +      '</div>'
+                  +      '<p class="discuss_content">'+disCache[i].content+'</p>'
+                  +  '</li>';
+    };
+    $('.discuss_ul').append(lineCache);
+};
 function getCmtDataList() {
     var cmtArr = [];
     // 可用ajax获取服务器的弹幕数据
@@ -104,8 +136,33 @@ $('#btn_js').on('click',function() {
         console.log(cmtArr[1]);
         sendMsg(cmtArr[i]);
     };
+    var this_time = new Date();
+    var theyear = this_time.getFullYear();
+    var themonth = this_time.getMonth()+1;
+    if (themonth < 10) {
+        themonth = '0'+themonth;
+    };
+    var thedate = this_time.getDate();
+    var line = '<li>'
+             +      '<div class="clearfix pdt10">'
+             +          '<p class="discuss_name fl">我：</p>'
+             +          '<p class="discuss_date fr">'+theyear+'-'+themonth+'-'+thedate+'</p>'
+             +      '</div>'
+             +      '<p class="discuss_content">'+msg+'</p>'
+             +  '</li>';
+    $('.discuss_ul').prepend(line);
+    var data = [], json = {};
+    $('.discuss_ul li').each(function(){
+        json = {
+            content: $(this).find('.discuss_content').html(),
+            time: $(this).find('.discuss_date').html()
+        };
+        data.push(json);
+    });
+    data = JSON.stringify(data);
+    window.sessionStorage.setItem("disCache",data);
     $('.input').val('');
-})
+});
 </script>
 </body>
 </html>

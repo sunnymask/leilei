@@ -10,16 +10,32 @@ ol, ul {
 }
 body {
     font: 14px/1.6 Helvetica Neue,Helvetica,Arial,sans-serif;
-    height: 2000px;
-    background-color: #e7e7e7;
+    /*height: 2000px;*/
+    background-color: #fff;
 }
+.clearfix,.container .content {
+    zoom: 1
+}
+.clearfix { 
+    *zoom: 1; 
+} 
+.clearfix:before, .clearfix:after { 
+    display: table; 
+    line-height: 0; 
+    content: ""; 
+} 
+.clearfix:after { 
+    clear: both; 
+} 
+.fl {float: left;}
+.fr {float: right;}
 .feng-ccl-panel {
     top: 0;
-    height: 235px;
+    height: 100%;
     left: 0;
     position: fixed;
     right: 0;
-    background-color: #333;
+    background-color: #6CA0F6;
 }
 .feng-ccl-panel .abp {
     height: 100%;
@@ -57,7 +73,22 @@ body {
     height: 35px;
     padding: 5px;
 }
-
+.discuss {
+    padding-top: 235px;
+    background-color: #fff;
+    padding-bottom: 37px;
+}
+.discuss > p {
+    margin: 0;
+    color: #333;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+}
+.pdt10 {
+    padding-top: 10px;
+}
 .input {
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -120,6 +151,17 @@ body {
 .abp .container .cmt.rshadow{
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
+
+.discuss_ul{margin:0 auto;width:94%;padding: 0;height: 160px;overflow-y:scroll;}
+.discuss_ul>li{border-bottom:1px solid #ccc;margin-bottom:8px;}
+.discuss_ul li p {
+    margin: 0;
+    color: #333;
+}
+.discuss_name{font-size:12px}
+.discuss_date{font-size:12px}
+.discuss_content{padding:5px 0}
+.feng-ccl-panel {z-index: 1000;}
 
 /** Aliases for Chinese named fonts because they don't work on *nix **/
 @font-face{
