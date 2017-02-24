@@ -71,7 +71,7 @@ body {
     border-top: 1px solid #ccc;
     clear: both;
     height: 35px;
-    padding: 10px 5px;
+    padding: 5px;
 }
 .discuss {
     padding-top: 235px;
@@ -92,22 +92,19 @@ body {
 .input {
     border: 1px solid #ddd;
     border-radius: 5px;
-    display: block;
+    display: inline-block;
     height: 30px;
-    width: calc(100% - 80px);
-    width: -moz-calc(100% - 80px);
-    width: -webkit-calc(100% - 80px);
+    width: 80%;
     text-indent: 5px;
     font-size: 14px;
 }
 .btn {
-    line-height: 30px;
     color: #666;
-    display: block;
+    display: inline-block;
     font-size: 16px;
     text-align: center;
     text-decoration: none;
-    width: 65px;
+    width: 15%;
 }
 .abp{
   position:relative;
@@ -156,7 +153,7 @@ body {
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
-.discuss_ul{margin:0 auto;width:94%;padding: 0;height: 160px;overflow-y:scroll;-webkit-overflow-scrolling: touch;}
+.discuss_ul{margin:0 auto;width:94%;padding: 0;height: 160px;overflow-y:scroll;}
 .discuss_ul>li{border-bottom:1px solid #ccc;margin-bottom:8px;}
 .discuss_ul li p {
     margin: 0;
