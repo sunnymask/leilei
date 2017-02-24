@@ -97,6 +97,7 @@ var canvas = document.getElementById('canvas'),
     }())
     function drawAqu() {
         canvas.height = 235;
+        $('.discuss_ul').css('height',document.body.clientHeight - 310 + 'px');
         $('.feng-ccl-panel').css('height','235px');
         //实例水草
         var oAquAni = null;
