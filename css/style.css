@@ -94,7 +94,9 @@ body {
     border-radius: 5px;
     display: inline-block;
     height: 30px;
-    width: 75%;
+    width: calc(100% - 75px);
+    width: -moz-calc(100% - 75px);
+    width: -webkit-calc(100% - 75px);
     text-indent: 5px;
     font-size: 14px;
 }
@@ -104,7 +106,7 @@ body {
     font-size: 16px;
     text-align: center;
     text-decoration: none;
-    width: 20%;
+    width: 65px;
 }
 .abp{
   position:relative;
