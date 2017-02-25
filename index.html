@@ -44,7 +44,7 @@ window.onload = function() {
                  +  '</li>';
     };
     $('.discuss_ul').append(linePoty);
-    var disCache = window.sessionStorage.getItem("disCache");
+    var disCache = window.localStorage.getItem("disCache");
     disCache = JSON.parse(disCache);
     // console.log(disCache);
     var lineCache = '';
@@ -86,7 +86,7 @@ function getCmtDataList() {
         // {"text":"一直都这么牛", "bgColor":"#3dbbc0"},
         // {"text":"来啊，互相伤害啊", "bgColor":"#ec4262"}
     ]
-    // sendMsg(cmtArr);
+    // sendAllMsg(cmtArr);
 }
 
 function sendMsg(cmtArr) {
@@ -191,7 +191,7 @@ $('#btn_js').on('click',function() {
             data.push(json);
         });
         data = JSON.stringify(data);
-        window.sessionStorage.setItem("disCache",data);
+        window.localStorage.setItem("disCache",data);
         $('.input').val('');
     };
         
