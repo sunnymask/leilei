@@ -134,7 +134,6 @@ var canvas = document.getElementById('canvas'),
         var i = 0;
         poty();
         function poty() {
-            console.log(i);
             if (i > 12) {
                 return;   
             }else {
@@ -142,7 +141,7 @@ var canvas = document.getElementById('canvas'),
                 i += 1;
                 setTimeout(function() {
                     poty();
-                },6000);
+                },3500);
             };
         }  
     };
