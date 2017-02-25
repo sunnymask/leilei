@@ -174,7 +174,7 @@ $('#btn_js').on('click',function() {
             themonth = '0'+themonth;
         };
         var thedate = this_time.getDate();
-        var line = '<li>'
+        var line = '<li class="my">'
                  +      '<div class="clearfix pdt10">'
                  +          '<p class="discuss_name fl">我：</p>'
                  +          '<p class="discuss_date fr">'+theyear+'-'+themonth+'-'+thedate+'</p>'
@@ -183,7 +183,7 @@ $('#btn_js').on('click',function() {
                  +  '</li>';
         $('.discuss_ul').prepend(line);
         var data = [], json = {};
-        $('.discuss_ul li').each(function(){
+        $('.discuss_ul .my').each(function(){
             json = {
                 content: $(this).find('.discuss_content').html(),
                 time: $(this).find('.discuss_date').html()
