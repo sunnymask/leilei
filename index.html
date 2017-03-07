@@ -22,7 +22,6 @@ video {
     <canvas id="canvas" width="500" height="400"></canvas>  
     <button id="snap">拍照</button>  
     <script type="text/javascript">  
-    window.onload = function() {
         var context = canvas.getContext("2d");  
         //当DOM树构建完成的时候就会执行DOMContentLoaded事件  
         window.addEventListener("DOMContentLoaded", function() {  
@@ -63,7 +62,6 @@ video {
         document.getElementById("snap").addEventListener("click", function() {  
             context.drawImage(video, 0, 0, 640, 480);  
         });  
-    }
     </script>  
 </body>  
 </html>
