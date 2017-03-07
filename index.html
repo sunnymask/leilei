@@ -1,4 +1,66 @@
-<!DOCTYPE html>
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<title>Document</title>  
+<style>  
+video {  
+    border: 1px solid #ccc;  
+    display: block;  
+    margin: 0 0 20px 0;  
+    float:left;  
+}  
+#canvas {  
+    margin-top: 20px;  
+    border: 1px solid #ccc;  
+    display: block;  
+}  
+</style>  
+</head>  
+<body>  
+    <video id="video" width="500" height="400" autoplay></video>  
+    <canvas id="canvas" width="500" height="400"></canvas>  
+    <button id="snap">拍照</button>  
+    <script type="text/javascript">  
+        var context = canvas.getContext("2d");  
+        //当DOM树构建完成的时候就会执行DOMContentLoaded事件  
+        window.addEventListener("DOMContentLoaded", function() {  
+            //获得Canvas对象  
+            var canvas = document.getElementById("canvas");  
+            //获得video摄像头区域  
+            var video = document.getElementById("video");  
+            var videoObj = {  
+                "video" : true  
+            };  
+            var errBack = function(error) {  
+                console.log("Video capture error: ", error.code);  
+            };  
+            //获得摄像头并显示到video区域  
+            if (navigator.getUserMedia) { // Standard  
+                navigator.getUserMedia(videoObj, function(stream) {  
+                    video.src = stream;  
+                    video.play();  
+                }, errBack);  
+            } else if (navigator.webkitGetUserMedia) { // WebKit-prefixed  
+                navigator.webkitGetUserMedia(videoObj, function(stream) {  
+                    video.src = window.webkitURL.createObjectURL(stream);  
+                    video.play();  
+                }, errBack);  
+            } else if (navigator.mozGetUserMedia) { // Firefox-prefixed  
+                navigator.mozGetUserMedia(videoObj, function(stream) {  
+                    video.src = window.URL.createObjectURL(stream);  
+                    video.play();  
+                }, errBack);  
+            }  
+        }, false);  
+        // 触发拍照动作  
+        document.getElementById("snap").addEventListener("click", function() {  
+            context.drawImage(video, 0, 0, 640, 480);  
+        });  
+    </script>  
+</body>  
+</html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"> 
@@ -32,6 +94,21 @@
 <script src="js/aqu.js"></script>
 <script>
 window.onload = function() {
+    var hiddenProperty = 'hidden' in document ? 'hidden' :    
+        'webkitHidden' in document ? 'webkitHidden' :    
+        'mozHidden' in document ? 'mozHidden' :    
+        null;
+    var visibilityChangeEvent = hiddenProperty.replace(/hidden/i, 'visibilitychange');
+    var onVisibilityChange = function(){
+        if (!document[hiddenProperty]) {    
+            console.log('页面非激活');
+            document.title = '评论弹幕';
+        }else{
+            console.log('页面激活');
+            document.title = '看这里，看这里';
+        }
+    };
+    document.addEventListener(visibilityChangeEvent, onVisibilityChange);
     var potyData = ['瀑布的水逆流而上','蒲公英的种子从远处飘回','聚成伞的模样','太阳从西边升起，落向东方','子弹退回枪膛','运动员回到起跑线上','我交回录取通知书','忘了十年寒窗','厨房里飘来饭菜的香','你把我的卷子签好名字','关掉电视，帮我把书包背上','你还在我身旁'];
     var linePoty = '';
     for (var i = 0; i < potyData.length; i++) {
@@ -43,6 +120,8 @@ window.onload = function() {
                  +      '<p class="discuss_content">'+potyData[i]+'</p>'
                  +  '</li>';
     };
+    //localStorage.removeItem('disCache');/*清除单个数据*/
+    //localStorage.clear(); /*清除全部本地数据*/
     $('.discuss_ul').append(linePoty);
     var disCache = window.localStorage.getItem("disCache");
     disCache = JSON.parse(disCache);
@@ -198,4 +277,4 @@ $('#btn_js').on('click',function() {
 });
 </script>
 </body>
-</html>
+</html> -->
