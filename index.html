@@ -38,21 +38,26 @@ video {
             };  
             //获得摄像头并显示到video区域  
             if (navigator.getUserMedia) { // Standard  
+                alert(1);
                 navigator.getUserMedia(videoObj, function(stream) {  
                     video.src = stream;  
                     video.play();  
                 }, errBack);  
             } else if (navigator.webkitGetUserMedia) { // WebKit-prefixed  
+                alert(2);
                 navigator.webkitGetUserMedia(videoObj, function(stream) {  
                     video.src = window.webkitURL.createObjectURL(stream);  
                     video.play();  
                 }, errBack);  
-            } else if (navigator.mozGetUserMedia) { // Firefox-prefixed  
+            } else if (navigator.mozGetUserMedia) { // Firefox-prefixed 
+                alert(3); 
                 navigator.mozGetUserMedia(videoObj, function(stream) {  
                     video.src = window.URL.createObjectURL(stream);  
                     video.play();  
                 }, errBack);  
-            }  
+            }else{
+                alert(4);
+            }
         }, false);  
         // 触发拍照动作  
         document.getElementById("snap").addEventListener("click", function() {  
