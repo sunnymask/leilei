@@ -41,6 +41,8 @@ window.onload = function() {
     }
     function scrollBottom() {
         window.scrollTo(0, $('body').height());
+        alert($('body').height());
+        alert($(window).height());
     }
     var hiddenProperty = 'hidden' in document ? 'hidden' :    
         'webkitHidden' in document ? 'webkitHidden' :    
