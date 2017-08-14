@@ -40,8 +40,8 @@ window.onload = function() {
         document.body.scrollTop = document.body.scrollHeight;//获取焦点后将浏览器内所有内容高度赋给浏览器滚动部分高度
         },100)
     }).blur(function(){//设定输入框失去焦点时的事件
-        clearInterval(interval);//清除计时器
-        document.body.scrollTop = bfscrolltop;//将软键盘唤起前的浏览器滚动部分高度重新赋给改变后的高度
+        clearInterval(that.interval);
+        document.body.scrollTop = bfscrolltop; //将软键盘唤起前的浏览器滚动部分高度重新赋给改变后的高度
     });
     var hiddenProperty = 'hidden' in document ? 'hidden' :    
         'webkitHidden' in document ? 'webkitHidden' :    
