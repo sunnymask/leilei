@@ -38,7 +38,10 @@ window.onload = function() {
     var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
     if (isiOS) {
         $('.input').focus(function () {
-            window.setTimeout('scrollBottom()', 500);
+            var target = this;
+            window.setTimeout(function() {
+                target.scrollIntoView(true);
+            }, 500);
         });
     }
     function scrollBottom() {
