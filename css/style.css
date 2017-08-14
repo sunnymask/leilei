@@ -64,7 +64,7 @@ body {
 .footer {
     background-color: #fff;
     bottom: 0;
-    position: fixed;
+    position: absolute;
     width: 100%;
 }
 .footer_box {
