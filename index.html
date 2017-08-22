@@ -265,27 +265,6 @@ body { background: #FF4A59; }
     width: 100%;
     text-align: center;
 }
-#head {
-    animation: 0.4s ease 0s normal none infinite running head;
-    animation: 0.4s ease 0s normal none infinite running head;
-    animation: 0.4s ease 0s normal none infinite running head;
-    animation: 0.4s ease 0s normal none infinite running head;
-    animation: 0.4s ease 0s normal none infinite running head;
-}
-#torso,#belly {
-    animation: 0.4s ease 0s normal none infinite running body;
-    animation: 0.4s ease 0s normal none infinite running body;
-    animation: 0.4s ease 0s normal none infinite running body;
-    animation: 0.4s ease 0s normal none infinite running body;
-    animation: 0.4s ease 0s normal none infinite running body;
-}
-#left-arm,#right-arm {
-    animation: 0.4s ease 0s normal none infinite running s;
-    animation: 0.4s ease 0s normal none infinite running s;
-    animation: 0.4s ease 0s normal none infinite running s;
-    animation: 0.4s ease 0s normal none infinite running s;
-    animation: 0.4s ease 0s normal none infinite running s;
-}
 #left-leg {
     animation: 0.8s ease 0s normal none infinite running leftlg;
     animation: 0.8s ease 0s normal none infinite running leftlg;
@@ -334,45 +313,12 @@ body { background: #FF4A59; }
         transform: rotateX(20deg);
     }
 }
-@keyframes body {
-    0% {
-        margin-bottom: 0;
-    }
-    50% {
-        margin-bottom: -2px;
-    }
-    100% {
-        margin-bottom: 0;
-    }
-}
-@keyframes s {
-    0% {
-        margin-bottom: 0;
-    }
-    50% {
-        margin-bottom: -4px;
-    }
-    100% {
-        margin-bottom: 0;
-    }
-}
-@keyframes head {
-    0% {
-        margin-top: 0px;
-    }
-    50% {
-        margin-top: 2px;
-    }
-    100% {
-        margin-top: 0px;
-    }
-}
 </style> 
 <body> 
-    <!-- <div class="tips">
+    <div class="tips">
         <span>还记得，前尘盟誓，欲言竟无词</span>
         <span>  ——— 水墨丷</span>
-    </div> -->
+    </div>
     <div id="baymax"> <!-- 定义头部，包括两个眼睛、嘴 --> 
         <div id="head"> 
             <div id="eye"></div> 
