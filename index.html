@@ -47,7 +47,7 @@ window.onload = function() {
         'webkitHidden' in document ? 'webkitHidden' :    
         'mozHidden' in document ? 'mozHidden' :    
         null;
-        alert(hiddenProperty);
+        // alert(hiddenProperty);
     var visibilityChangeEvent = hiddenProperty.replace(/hidden/i, 'visibilitychange');
     var onVisibilityChange = function(){
         if (!document[hiddenProperty]) {    
@@ -65,7 +65,7 @@ window.onload = function() {
         linePoty += '<li>'
                  +      '<div class="clearfix pdt10">'
                  +          '<p class="discuss_name fl">水墨：</p>'
-                 +          '<p class="discuss_date fr">2017-2-24 10:52:12</p>'
+                 +          '<p class="discuss_date fr">2017-2-24</p>'
                  +      '</div>'
                  +      '<p class="discuss_content">'+potyData[i]+'</p>'
                  +  '</li>';
@@ -73,23 +73,24 @@ window.onload = function() {
     //localStorage.removeItem('disCache');/*清除单个数据*/
     //localStorage.clear(); /*清除全部本地数据*/
     $('.discuss_ul').append(linePoty);
-    var disCache = window.localStorage.getItem("disCache");
-    disCache = JSON.parse(disCache);
-    // console.log(disCache);
-    var lineCache = '';
-    if (disCache) {
-        for (var i = 0; i < disCache.length; i++) {
-            lineCache += '<li>'
-                      +      '<div class="clearfix pdt10">'
-                      +          '<p class="discuss_name fl">我：</p>'
-                      +          '<p class="discuss_date fr">'+disCache[i].time+'</p>'
-                      +      '</div>'
-                      +      '<p class="discuss_content">'+disCache[i].content+'</p>'
-                      +  '</li>';
-        };
-    }; 
-    $('.discuss_ul').prepend(lineCache);
-
+    // if (window.localStorage) {
+    //     var disCache = window.localStorage.getItem("disCache");
+    //     disCache = JSON.parse(disCache);
+    //     // console.log(disCache);
+    //     var lineCache = '';
+    //     if (disCache) {
+    //         for (var i = 0; i < disCache.length; i++) {
+    //             lineCache += '<li>'
+    //                       +      '<div class="clearfix pdt10">'
+    //                       +          '<p class="discuss_name fl">我：</p>'
+    //                       +          '<p class="discuss_date fr">'+disCache[i].time+'</p>'
+    //                       +      '</div>'
+    //                       +      '<p class="discuss_content">'+disCache[i].content+'</p>'
+    //                       +  '</li>';
+    //         };
+    //     }; 
+    //     $('.discuss_ul').prepend(lineCache);
+    // }
 };
 function getCmtDataList() {
     var cmtArr = [];
@@ -319,33 +320,33 @@ body { background: #FF4A59; }
         <span>还记得，前尘盟誓，欲言竟无词</span>
         <span>  ——— 水墨丷</span>
     </div>
-    <div id="baymax"> <!-- 定义头部，包括两个眼睛、嘴 --> 
+    <div id="baymax"> 定义头部，包括两个眼睛、嘴 
         <div id="head"> 
             <div id="eye"></div> 
             <div id="eye2"></div> 
             <div id="mouth"></div> 
         </div> 
-        <!-- 定义躯干，包括心脏 --> 
+        定义躯干，包括心脏 
         <div id="torso"> 
             <div id="heart"></div> 
         </div> 
-        <!-- 定义肚子腹部，包括 cover（和躯干的连接处） --> 
+        定义肚子腹部，包括 cover（和躯干的连接处） 
         <div id="belly"> 
             <div id="cover"></div> 
         </div> 
-        <!-- 定义左臂，包括一大一小两个手指 --> 
+        定义左臂，包括一大一小两个手指 
         <div id="left-arm"> 
             <div id="l-bigfinger"></div> 
             <div id="l-smallfinger"></div> 
         </div> 
-        <!-- 定义右臂，同样包括一大一小两个手指 --> 
+        定义右臂，同样包括一大一小两个手指 
         <div id="right-arm"> 
             <div id="r-bigfinger"></div> 
             <div id="r-smallfinger"></div> 
         </div> 
-        <!-- 定义左腿 --> 
+        定义左腿 
         <div id="left-leg"></div> 
-        <!-- 定义右腿 --> 
+        定义右腿 
         <div id="right-leg"></div> 
     </div> 
 </body> 
